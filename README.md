@@ -42,5 +42,3 @@ Run `npm run testbe` to execute the backend tests via [Mocha](https://mochajs.or
 
 ## Running linters
 Run `npm run lint` to execute [TS linting](https://github.com/palantir/tslint), [HTML linting](https://github.com/htmlhint/HTMLHint) and [SASS linting](https://github.com/sasstools/sass-lint).
-
-![image](https://user-images.githubusercontent.com/88378590/139868655-758c177d-7268-4c9e-afdd-ce1552930917.png)
