@@ -1,4 +1,4 @@
-# washmen
+# Washmen
 
 
 Washmen Angular Full Stack is a project written with angular as a front end and Nodejs as a backend. Whole stack is in TypeScript, from frontend to backend, giving you the advantage to code in one single language throughout the all stack.
