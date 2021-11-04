@@ -1,0 +1,48 @@
+<app-loading [condition]="isLoading"></app-loading>
+
+<app-toast [message]="toast.message"></app-toast>
+
+<div class="card mb-3" *ngIf="!isLoading">
+  <h4 class="card-header" style="color:green">Current partners ({{partners.length}})</h4>
+  <div class="card-body">
+    <form [formGroup]="partnerForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="maxdistance">Enter Max Distance (Km):</label>
+          <input type="text" id="maxdistance" name="maxdistance" formControlName="maxdistance" class="form-control" [ngClass]="{'form-control-danger':!f.maxdistance?.valid && (f.maxdistance?.dirty ||f.maxdistance?.touched)}">
+          <div *ngIf="!f.maxdistance?.valid && (f.maxdistance?.dirty ||f.maxdistance?.touched)">
+            <div [hidden]="!f.maxdistance.errors.required" class="error">
+              Max distance is required
+            </div>
+            <div [hidden]="!f.maxdistance.errors.pattern" class="error">
+              Max distance must be a numeric value greater then zero
+            </div>
+          </div>
+        </div>
+        <p>
+          <button class="btn btn-primary" type="submit" [disabled]="!partnerForm.valid">Search</button>
+          &nbsp; &nbsp; &nbsp;
+          <button class="btn btn-primary" (click)="reset()" style="background-color: white;border-color:#3880ff ;color:#3880ff">Clear</button>
+        </p>
+    </form>
+    <br/>
+    <table class="table table-bordered">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">Organisation</th>
+          <th scope="col">Address</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="partners.length === 0">
+        <tr>
+          <td colspan="4">There are no partner near you.</td>
+        </tr>  
+      </tbody>
+      <tbody>
+        <tr *ngFor="let pt of partners">
+          <td>{{pt.organization}}</td>
+          <td><ul><li *ngFor="let adr of pt.offices">{{adr.address}}</li></ul></td>
+        </tr>  
+      </tbody>
+    </table>
+  </div>
+</div>
